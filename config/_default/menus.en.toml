@@ -2,48 +2,34 @@
 
 # main menu
 [[main]]
-name = "Home"
+name = "Send Via API"
 url = "/"
 weight = 1
 
 [[main]]
-name = "About"
-url = "/about"
+name = "Send Via SMTP"
+url = "send-via-smtp/"
 weight = 2
 
 [[main]]
-name = "Elements"
-url = "/elements"
+name = "Pricing"
+url = "pricing/"
 weight = 3
 
 [[main]]
-weight = 4
-name = "Pages"
-
-[[main]]
-parent = "Pages"
-name = "Blog"
-url = "/blog"
-
-[[main]]
-parent = "Pages"
 name = "Contact"
-url = "/contact"
+url = "contact/"
+weight = 4
 
 [[main]]
-parent = "Pages"
-name = "Authors"
-url = "/authors"
+name = "Docs"
+url = "docs/"
+weight = 5
 
 [[main]]
-parent = "Pages"
-name = "Categories"
-url = "/categories"
-
-[[main]]
-parent = "Pages"
-name = "404 Page"
-url = "/404"
+name = "API"
+url = "api/"
+weight = 6
 
 
 # footer menu

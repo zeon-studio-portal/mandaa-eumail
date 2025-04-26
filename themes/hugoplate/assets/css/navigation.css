@@ -1,5 +1,5 @@
 .header {
-  @apply bg-body  py-6;
+  @apply bg-body py-6 lg:py-0;
 }
 
 /* navbar items */
@@ -19,9 +19,11 @@
 }
 
 .nav-link {
-  @apply text-text-dark hover:text-primary   block p-3 cursor-pointer font-semibold transition lg:px-2 lg:py-3;
+  @apply text-text-dark hover:text-primary   block p-3 cursor-pointer font-normal transition lg:px-2 lg:py-8;
 }
-
+.nav-link.active {
+  @apply text-primary lg:border-t-4;
+}
 .nav-dropdown {
   @apply mr-0;
 }
