@@ -14,13 +14,13 @@ testimonials:
 
   - quote: "DebbieCollect takes privacy and GDPR compliance very seriously. When we found out that we could switch to a solution that is developed and hosted in the EU, we decided to move from Postmarkapp to EUmail."
     company: "DebbieCollect"
-    company_url: "http://debbiecollect.com"
+    company_url: "https://debbiecollect.com"
     name: "Emil Brandt"
     role: "CEO & CTO"
     avatar: "images/avatars/emil_brandt.jpeg"
 
   - quote: "Being GDPR compliant is not easy. EUmail is a safe, affordable, and easy alternative to non-EU email solutions."
-    company: "Mandaa EUmail, ES"
+    company: "Mandaa EUmail"
     company_url: ""
     name: "Torben Sørensen"
     role: "Founder"
@@ -28,7 +28,7 @@ testimonials:
 
   - quote: "Our customers expressed doubt about GDPR compliance when we used US based email services. That is why we switched to EUmail."
     company: "CUBS A/S, DK"
-    company_url: "www.cubs.dk"
+    company_url: "https://www.cubs.dk"
     name: "Peter Ulka"
     role: "CEO"
     avatar: "images/avatars/peterulka.jpeg"
