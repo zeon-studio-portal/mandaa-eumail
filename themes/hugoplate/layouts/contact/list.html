@@ -4,84 +4,91 @@
 {{ with .Params.contact_form }}
 <section class="mb-30">
   <div class="container">
-    <div class="bg-white shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] p-20 rounded-lg">
-      <div class="row">
-        <div class="col-5">
+    <div class="bg-white shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] p-10 md:p-20 rounded-lg">
+      <div class="row gap-y-10">
+        <div class="lg:col-5">
           <span class="text-primary mb-4 block">{{ .head | markdownify }}</span>
           <h2 class="text-h4 font-semibold mb-6"> {{.title}}</h2>
           <p class="text-text-dark text-lg">{{ .description | markdownify }}</p>
         </div>
-        <div class="col-7 pl-10">
+        <div class="lg:col-7 lg:pl-10">
           <form action="">
             <div class="row">
-              {{/*  full name  */}}
-              <div class="col-6 mb-6">
+              {{/* full name */}}
+              <div class="sm:col-6 mb-6">
                 <div class="flex flex-col">
-                  <label for="name" class="text-text-dark form-label">Full Name <span class="text-red-600">*</span></label>
-                  <input type="text" id="name"  name="full_name" class="form-input" required>
+                  <label for="name" class="text-text-dark form-label">Full Name <span
+                      class="text-red-600">*</span></label>
+                  <input type="text" id="name" name="full_name" class="form-input" required>
                 </div>
               </div>
-              {{/*  username  */}}
-              <div class="col-6 mb-6">
+              {{/* username */}}
+              <div class="sm:col-6 mb-6">
                 <div class="flex flex-col">
-                  <label for="username" class="text-text-dark form-label">Username <span class="text-red-600">*</span></label>
+                  <label for="username" class="text-text-dark form-label">Username <span
+                      class="text-red-600">*</span></label>
                   <input type="text" id="username" name="username" class="form-input" required>
                 </div>
               </div>
 
-               {{/*  phone  */}}
-               <div class="col-6 mb-6">
+              {{/* phone */}}
+              <div class="sm:col-6 mb-6">
                 <div class="flex flex-col">
-                  <label for="phone" class="text-text-dark form-label">Phone Number <span class="text-red-600">*</span></label>
+                  <label for="phone" class="text-text-dark form-label">Phone Number <span
+                      class="text-red-600">*</span></label>
                   <input type="text" id="phone" name="phone" class="form-input" required>
                 </div>
               </div>
 
-                {{/*  email */}}
-                <div class="col-6 mb-6">
-                  <div class="flex flex-col">
-                    <label for="email" class="text-text-dark form-label">Email <span class="text-red-600">*</span></label>
-                    <input type="text" id="email"  name="email" class="form-input" required>
-                  </div>
+              {{/* email */}}
+              <div class="sm:col-6 mb-6">
+                <div class="flex flex-col">
+                  <label for="email" class="text-text-dark form-label">Email <span class="text-red-600">*</span></label>
+                  <input type="text" id="email" name="email" class="form-input" required>
                 </div>
+              </div>
 
-                {{/*  system  */}}
-                <div class="col-12 mb-6">
-                  <div class="flex flex-col">
-                    <label for="system" class="text-text-dark form-label">What System Will You Send Mails From? <span class="text-red-600">*</span></label>
-                    <input type="text" id="system" name="system" class="form-input" required>
-                  </div>
+              {{/* system */}}
+              <div class="col-12 mb-6">
+                <div class="flex flex-col">
+                  <label for="system" class="text-text-dark form-label">What System Will You Send Mails From? <span
+                      class="text-red-600">*</span></label>
+                  <input type="text" id="system" name="system" class="form-input" required>
                 </div>
+              </div>
 
-                 {{/*  Textarea  */}}
-                 <div class="col-12 mb-6">
-                  <div class="flex flex-col">
-                    <label for="system" class="text-text-dark form-label">What would you like to talk to us about? <span class="text-red-600">*</span></label>
-                    <textarea id="system" name="system" class="form-input" rows="3" required></textarea>
-                  </div>
+              {{/* Textarea */}}
+              <div class="col-12 mb-6">
+                <div class="flex flex-col">
+                  <label for="system" class="text-text-dark form-label">What would you like to talk to us about? <span
+                      class="text-red-600">*</span></label>
+                  <textarea id="system" name="system" class="form-input" rows="3" required></textarea>
                 </div>
+              </div>
 
-                  {{/*  label  */}}
-                  <div class="col-12">
-                    <div class="flex flex-col">
-                      <label for="system" class="text-text-dark form-label">Technical Level?</label>
-                      <div class="flex items-center gap-4">
-                        <div class="flex items-center">
-                          <input type="radio" id="beginner" name="level" value="beginner">
-                          <label for="beginner" class="ml-2">Beginner</label>
-                        </div>
-                        <div class="flex items-center">
-                          <input type="radio" id="intermediate" name="level" value="intermediate">
-                          <label for="intermediate" class="ml-2">Intermediate</label>
-                        </div>
-                        <div class="flex items-center">
-                          <input type="radio" id="advanced" name="level" value="advanced">
-                          <label for="advanced" class="ml-2">Advanced</label>
-                        </div>
+              {{/* label */}}
+              <div class="col-12 mb-6">
+                <div class="flex flex-col">
+                  <label for="system" class="text-text-dark form-label">Technical Level?</label>
+                  <div class="flex items-center gap-4 flex-wrap">
+                    <div class="flex items-center">
+                      <input type="radio" id="beginner" name="level" value="beginner">
+                      <label for="beginner" class="ml-2">Beginner</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" id="experienced" name="level" value="experienced">
+                      <label for="experienced" class="ml-2">Experienced</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input type="radio" id="expert" name="level" value="expert">
+                      <label for="expert" class="ml-2">Expert</label>
                     </div>
                   </div>
-
-            </div>
+                </div>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary w-full cursor-pointer">{{T "send_message"}}</button>
+              </div>
           </form>
         </div>
       </div>
@@ -90,5 +97,28 @@
 </section>
 {{ end }}
 
+{{ with .Params.get_in_touch }}
+{{ if .enable }}
+<section class="section">
+  <div class="container">
+    <div class="flex flex-col items-center text-center mb-14">
+      <h2 class="mb-4 lg:text-h1-sm">{{ .title | markdownify }}</h2>
+      <p class="text-lg">{{ .description | markdownify }}</p>
+    </div>
+    <div class="row gap-y-8">
+      {{ range .contact_list }}
+      <div class="md:col-6 lg:col-4">
+        <div class="bg-white shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] p-10 rounded-lg flex flex-col items-center text-center h-full">
+          <div class="h-10 w-10 mb-4 bg-light rounded-full flex items-center justify-center"><i class="{{ .icon }} text-primary text-lg"></i></div>
+          <h3 class="text-h5 font-semibold mb-4">{{ .title }}</h3>
+          <p class="text-text-dark text-lg">{{ .value | markdownify }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
 
 {{ end }}

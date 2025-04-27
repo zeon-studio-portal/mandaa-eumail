@@ -28,7 +28,7 @@ weight = 5
 
 [[main]]
 name = "API"
-url = "api/"
+url = "https://api.mandaa.io"
 weight = 6
 
 
@@ -61,10 +61,10 @@ weight = 4
 
 [[legal]]
 name = "Privacy Policy"
-url = "privacy-policy/"
+url = "/privacy-policy/"
 weight = 1
 
 [[legal]]
 name = "Terms and Conditions"
-url = "terms-and-conditions/"
+url = "/terms-and-conditions/"
 weight = 2

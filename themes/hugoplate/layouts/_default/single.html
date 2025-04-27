@@ -4,10 +4,17 @@
 
   <section class="section-sm">
     <div class="container">
-      <div class="row justify-center">
-        <div class="lg:col-10">
-          <div class="content">
-            {{ .Content }}
+      <div class="row justify-center gap-y-6">
+        <div class="lg:col-3">
+          <div class="sticky top-26 table-of-contents">
+            {{.TableOfContents}}
+          </div>
+        </div>
+        <div class="lg:col-9">
+          <div class="bg-white rounded-lg shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] px-8 sm:px-14 py-10 sm:py-20">
+            <div class="content">
+              {{ .Content }}
+            </div>
           </div>
         </div>
       </div>
