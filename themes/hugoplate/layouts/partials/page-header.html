@@ -1,8 +1,8 @@
-<section>
+<section class="section-sm">
   <div class="container text-center">
-    <div class="from-body to-light   rounded-2xl bg-gradient-to-b px-8 py-14">
-      <h1>{{ T (printf "%s" (lower .Title)) | default .Title | title }}</h1>
-      {{ partial "components/breadcrumb" (dict "Context" . "Class" "mt-6") }}
+    <div class="md:w-7/12 mx-auto">
+      <h1 class="lg:text-[60px] mb-6">{{ T (printf "%s" (lower .Title)) | default .Title | title }}</h1>
+      <p class="text-lg">{{ .Params.description | markdownify }}</p>
     </div>
   </div>
 </section>

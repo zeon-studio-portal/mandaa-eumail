@@ -1,120 +1,94 @@
 {{ define "main" }}
-  {{ partial "page-header" . }}
+{{ partial "page-header" . }}
 
-
-  <section class="section-sm">
-    <div class="container">
+{{ with .Params.contact_form }}
+<section class="mb-30">
+  <div class="container">
+    <div class="bg-white shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] p-20 rounded-lg">
       <div class="row">
-        <div class="md:col-10 lg:col-6 mx-auto">
-          <form action="{{ site.Params.contact_form_action }}" method="POST">
-            <div class="mb-6">
-              <label for="name" class="form-label">
-                Full Name <span class="text-red-500">*</span>
-              </label>
-              <input
-                id="name"
-                name="name"
-                class="form-input"
-                placeholder="John Doe"
-                type="text" />
+        <div class="col-5">
+          <span class="text-primary mb-4 block">{{ .head | markdownify }}</span>
+          <h2 class="text-h4 font-semibold mb-6"> {{.title}}</h2>
+          <p class="text-text-dark text-lg">{{ .description | markdownify }}</p>
+        </div>
+        <div class="col-7 pl-10">
+          <form action="">
+            <div class="row">
+              {{/*  full name  */}}
+              <div class="col-6 mb-6">
+                <div class="flex flex-col">
+                  <label for="name" class="text-text-dark form-label">Full Name <span class="text-red-600">*</span></label>
+                  <input type="text" id="name"  name="full_name" class="form-input" required>
+                </div>
+              </div>
+              {{/*  username  */}}
+              <div class="col-6 mb-6">
+                <div class="flex flex-col">
+                  <label for="username" class="text-text-dark form-label">Username <span class="text-red-600">*</span></label>
+                  <input type="text" id="username" name="username" class="form-input" required>
+                </div>
+              </div>
+
+               {{/*  phone  */}}
+               <div class="col-6 mb-6">
+                <div class="flex flex-col">
+                  <label for="phone" class="text-text-dark form-label">Phone Number <span class="text-red-600">*</span></label>
+                  <input type="text" id="phone" name="phone" class="form-input" required>
+                </div>
+              </div>
+
+                {{/*  email */}}
+                <div class="col-6 mb-6">
+                  <div class="flex flex-col">
+                    <label for="email" class="text-text-dark form-label">Email <span class="text-red-600">*</span></label>
+                    <input type="text" id="email"  name="email" class="form-input" required>
+                  </div>
+                </div>
+
+                {{/*  system  */}}
+                <div class="col-12 mb-6">
+                  <div class="flex flex-col">
+                    <label for="system" class="text-text-dark form-label">What System Will You Send Mails From? <span class="text-red-600">*</span></label>
+                    <input type="text" id="system" name="system" class="form-input" required>
+                  </div>
+                </div>
+
+                 {{/*  Textarea  */}}
+                 <div class="col-12 mb-6">
+                  <div class="flex flex-col">
+                    <label for="system" class="text-text-dark form-label">What would you like to talk to us about? <span class="text-red-600">*</span></label>
+                    <textarea id="system" name="system" class="form-input" rows="3" required></textarea>
+                  </div>
+                </div>
+
+                  {{/*  label  */}}
+                  <div class="col-12">
+                    <div class="flex flex-col">
+                      <label for="system" class="text-text-dark form-label">Technical Level?</label>
+                      <div class="flex items-center gap-4">
+                        <div class="flex items-center">
+                          <input type="radio" id="beginner" name="level" value="beginner">
+                          <label for="beginner" class="ml-2">Beginner</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input type="radio" id="intermediate" name="level" value="intermediate">
+                          <label for="intermediate" class="ml-2">Intermediate</label>
+                        </div>
+                        <div class="flex items-center">
+                          <input type="radio" id="advanced" name="level" value="advanced">
+                          <label for="advanced" class="ml-2">Advanced</label>
+                        </div>
+                    </div>
+                  </div>
+
             </div>
-            <div class="mb-6">
-              <label for="email" class="form-label">
-                Working Mail <span class="text-red-500">*</span>
-              </label>
-              <input
-                id="email"
-                name="email"
-                class="form-input"
-                placeholder="john.doe@email.com"
-                type="email" />
-            </div>
-            <div class="mb-6">
-              <label for="message" class="form-label">
-                Anything else? <span class="text-red-500">*</span>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                class="form-input"
-                placeholder="Message goes here..."
-                rows="8"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+{{ end }}
 
-  <!-- google map -->
-  {{ with site.Params.google_map }}
-    {{ if .enable }}
-      <div
-        id="map"
-        style="height: 400px;"
-        data-latitude="{{ .map_latitude }}"
-        data-longitude="{{ .map_longitude }}"
-        data-marker="{{ .map_marker | relURL }}"
-        data-marker-name="{{ site.Title }}"></div>
-    {{ end }}
-  {{ end }}
-
-  {{ with site.Params.subscription }}
-    {{ if .enable }}
-      <!-- subscription form -->
-      <form
-        action="{{ .mailchimp_form_action | safeURL }}"
-        method="post"
-        id="mc-embedded-subscribe-form"
-        novalidate="novalidate">
-        <div class="input-group w-75 mx-auto mb-3">
-          <input
-            type="email"
-            name="EMAIL"
-            placeholder="Email"
-            class="form-control required email mce_inline_error"
-            id="mce-EMAIL"
-            aria-required="true"
-            autocomplete="off"
-            required />
-          <button
-            class="input-group-text"
-            name="subscribe"
-            id="mc-embedded-subscribe">
-            {{ .button_label }}
-          </button>
-        </div>
-        <input
-          type="hidden"
-          name="EMAILTYPE"
-          id="mce-EMAILTYPE-0"
-          value="html" />
-        <div style="position:absolute;left:-5000px" aria-hidden="true">
-          <input type="text" name="{{ .name }}" tabindex="-1" />
-        </div>
-      </form>
-      <div id="mce-responses" class="clear">
-        <div
-          class="response text-white"
-          id="mce-error-response"
-          style="display:none"></div>
-        <div
-          class="response text-white"
-          id="mce-success-response"
-          style="display:none"></div>
-      </div>
-      <script
-        type="text/javascript"
-        src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-      <!-- /subscription form -->
-    {{ end }}
-  {{ end }}
-
-  {{ if site.Params.google_map.enable }}
-    {{ $gmap:= resources.Get "plugins/maps/google-map.js" }}
-    <script defer src="{{ $gmap.RelPermalink }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ site.Params.google_map.map_api_key }}&libraries=places"></script>
-  {{ end }}
 
 {{ end }}
