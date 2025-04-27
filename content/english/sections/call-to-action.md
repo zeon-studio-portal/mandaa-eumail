@@ -1,12 +1,11 @@
 ---
 enable: true
-title: "Ready to build your next project with Hugo?"
-image: "/images/call-to-action.png"
-description: "Experience the future of web development with Hugoplate and Hugo. Build lightning-fast static sites with ease and flexibility."
+title: "It's time to change your mind"
+description: "Our SMTP service is currently offered as a per request only service.Please user our contact form to gain access to sending using our this service. "
 button:
   enable: true
   label: "Get Started Now"
-  link: "https://github.com/zeon-studio/hugoplate"
+  link: "pricing"
 
 # don't create a separate page
 build:

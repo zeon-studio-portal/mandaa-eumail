@@ -7,8 +7,8 @@ banner:
   content: "GDPR safe transactional email service delivered from within the EU."
   image: "images/banner.png"
   button:
-    label: "Download Now"
-    link: "#"
+    label: "Start For Free"
+    link: "pricing"
 
 # Features
 features:

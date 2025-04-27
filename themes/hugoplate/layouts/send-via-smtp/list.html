@@ -1,0 +1,76 @@
+{{ define "main" }}
+<!-- Banner -->
+{{ with .Params.banner }}
+{{ if .enable }}
+<section class="section bg-primary/10">
+    <div class="container">
+        <div class="row gy-5 items-center">
+            <div class="md:col-6 lg:col-7 order-2 md:order-1 text-center md:text-start">
+                <h1 class="font-bold mb-4 lg:text-[80px]">{{ .title | safeHTML | markdownify }}</h1>
+                <p class="text-text-dark mb-10 text-lg font-medium">{{ .content | safeHTML | markdownify }}</p>
+                {{ with .button }}
+                <a href="{{ .link | absLangURL }}" class="btn btn-primary btn-lg">{{ .label }}</a>
+                {{ end }}
+            </div>
+            <div class="md:col-6 lg:col-5 order-1 md:order-2 flex justify-center relative">
+                {{ partial "image.html" (dict "Src" .image "Alt" "banner-image" "Class" "w-[250px] md:w-[330px]" "Size"
+                "330x")
+                }}
+                <div class="block absolute bottom-30 left-20 md:left-0 z-10 bg-[#155063] rounded-2xl ">
+                    <img src="/images/mail.gif" alt="gif" class="w-full">
+                </div>
+                <div
+                    class="flex absolute top-30 right-24  md:right-16 z-10 bg-[#155063] rounded-full w-[78px] h-[78px] items-center justify-center">
+                    <img src="/images/monitor.png" alt="document" class="w-[35px]">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}
+<!-- Banner -->
+
+<!-- How to Send Email -->
+{{ with .Params.how_to_send_email }}
+{{ if .enable }}
+<section class="section">
+    <div class="container">
+        <h2 class="mb-12 text-h1">{{ .title | markdownify }}</h2>
+        <div class="row gap-y-10">
+            <div class="lg:col-7 lg:pr-15 order-2 lg:order-1">
+                {{ range $index, $item := .list }}
+                <div class="bg-light rounded-xl p-4 mb-3">
+                    <h3 class="text-h5 mb-2 font-semibold flex items-center gap-3">
+                        <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="mask0_12_515" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="22" height="23">
+                                <path
+                                    d="M11 21.5C12.3135 21.5016 13.6143 21.2437 14.8278 20.7411C16.0412 20.2384 17.1434 19.5009 18.071 18.571C19.0009 17.6434 19.7384 16.5412 20.2411 15.3278C20.7437 14.1143 21.0016 12.8135 21 11.5C21.0016 10.1866 20.7437 8.88572 20.2411 7.67225C19.7384 6.45878 19.0009 5.35659 18.071 4.42901C17.1434 3.49909 16.0412 2.76162 14.8278 2.25897C13.6143 1.75631 12.3135 1.49839 11 1.50001C9.68655 1.49839 8.38572 1.75631 7.17225 2.25897C5.95878 2.76162 4.85659 3.49909 3.92901 4.42901C2.99909 5.35659 2.26162 6.45878 1.75897 7.67225C1.25631 8.88572 0.998388 10.1866 1.00001 11.5C0.998388 12.8135 1.25631 14.1143 1.75897 15.3278C2.26162 16.5412 2.99909 17.6434 3.92901 18.571C4.85659 19.5009 5.95878 20.2384 7.17225 20.7411C8.38572 21.2437 9.68655 21.5016 11 21.5Z"
+                                    fill="white" stroke="white" stroke-width="2" stroke-linejoin="round" />
+                                <path d="M7 11.5L10 14.5L16 8.5" stroke="black" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </mask>
+                            <g mask="url(#mask0_12_515)">
+                                <path d="M-1 -0.5H23V23.5H-1V-0.5Z" fill="#2E7EED" />
+                            </g>
+                        </svg>
+
+                        {{ $item.title }}
+                    </h3>
+                    <p>{{ $item.content | markdownify }}</p>
+                </div>
+                {{ end }}
+            </div>
+            <div class="lg:col-5 flex items-center justify-center order-1 lg:order-2">
+                {{ partial "image" (dict "Src" .image "Alt" "how-to-send-email" "Class" "mx-auto lg:w-full rounded-md") }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}
+<!-- How to Send Email -->
+
+{{ partial "call-to-action"  }}
+{{ end }}
