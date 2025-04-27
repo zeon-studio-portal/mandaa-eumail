@@ -1,53 +1,117 @@
-<footer class="bg-light ">
-  <div class="container">
-    <div class="row items-center py-10">
-      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
-        <!-- navbar brand/logo -->
-        <a
-          class="navbar-brand inline-block"
-          href="{{ site.Home.RelPermalink }}">
-          {{ partial "logo" }}
+<footer class="bg-dark">
+  <div class="container section">
+    <div class="row gap-y-10">
+      <!-- Logo and Social Icons -->
+      <div class="md:col-4 lg:col-3 xl:col-2">
+        <a href="/">
+          {{ partial "image" (dict "Src" "/images/logo-darkmode.png" "Alt" site.Title) }}
         </a>
-      </div>
-      <div class="lg:col-6 mb-8 text-center lg:mb-0">
-        <ul>
-          {{ range site.Menus.footer }}
-            <li class="m-3 inline-block">
-              <a
-                {{ if findRE `^http` .URL }}
-                  target="_blank" rel="noopener"
-                {{ end }}
-                href="{{ if findRE `^#` .URL }}
-                  {{ if not $.IsHome }}
-                    {{ site.Home.RelPermalink }}
-                  {{ end }}{{ .URL }}
-                {{ else }}
-                  {{ .URL | relLangURL }}
-                {{ end }}"
-                >{{ .Name }}</a
-              >
-            </li>
-          {{ end }}
-        </ul>
-      </div>
-      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:mt-0 lg:text-right">
-        <ul class="social-icons">
+        <ul class="social-icons mt-5">
           {{ range site.Data.social.main }}
-            <li>
-              <a
-                target="_blank"
-                aria-label="{{ .name }}"
-                rel="nofollow noopener"
-                href="{{ .link | safeURL }}">
-                <i class="{{ .icon }}"></i>
-              </a>
-            </li>
+          <li>
+            <a href="{{ .link | safeURL }}" target="_blank" rel="noopener nofollow">
+              <span class="sr-only">{{ .title }}</span>
+              <i class="{{ .icon }}"></i>
+            </a>
+          </li>
           {{ end }}
         </ul>
       </div>
+
+      <!-- Quick Links -->
+      <div class="md:col-4 lg:col-3 xl:col-2">
+        <h5 class="text-white font-medium text-lg mb-6">{{ T "quick_links" }}</h5>
+        <ul class="list-unstyled">
+          {{ range site.Menus.quick_links }}
+          <li class="mb-2">
+            <a class="text-text-light hover:text-primary transition duration-300" href="{{ .URL | safeURL }}">{{ .Name
+              }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="md:col-4 lg:col-3 xl:col-2">
+        <h5 class="text-white font-medium text-lg mb-6">{{ T "legal" }}</h5>
+        <ul class="list-unstyled">
+          {{ range site.Menus.legal }}
+          <li class="mb-2">
+            <a class="text-text-light hover:text-primary transition duration-300" href="{{ .URL | safeURL }}">{{ .Name
+              }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="md:col-6 lg:col-3">
+        <h5 class="text-white font-medium text-lg mb-6">{{ T "company" }}</h5>
+        <ul class="list-unstyled">
+          <li class="mb-3 block">
+            <div class="flex items-center gap-4">
+              <div class="bg-light/20 w-9 h-9 flex items-center justify-center rounded-full">
+                 <i class="fa-solid fa-envelope text-white"></i>
+                </div>
+             <div>
+              <p class="text-text-light">{{ T "mail" }}</p>
+              <a class="text-text-light hover:text-primary transition duration-300"
+              href="mailto:{{ site.Params.mail }}" target="_blank">{{ site.Params.mail }}</a>
+             </div>
+            </div>
+          </li>
+
+          <li class="block">
+            <div class="flex items-center gap-4">
+              <div class="bg-light/20 w-9 h-9 flex items-center justify-center rounded-full">
+                 <i class="fa-solid fa-phone text-white"></i>
+                </div>
+             <div>
+              <p class="text-text-light">{{ T "phone" }}</p>
+              <a class="text-text-light hover:text-primary transition duration-300"
+              href="tel:{{ site.Params.phone }}" target="_blank">{{ site.Params.phone }}</a>
+             </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Location -->
+      <div class="md:col-6 xl:col-3">
+        <h5 class="text-white font-medium text-lg mb-6">{{ T "location" }}</h5>
+        <ul class="list-unstyled">
+          <li class="mb-3 block">
+            <div class="flex items-center gap-4">
+              <div class="bg-light/20 w-9 h-9 flex items-center justify-center rounded-full">
+                 <i class="fa-solid fa-location-dot text-white"></i>
+                </div>
+             <div class="w-8/12">
+              <p class="text-text-light">Spain</p>
+              <a class="text-text-light hover:text-primary transition duration-300"
+              href="{{ site.Params.locations.spain }}" target="_blank">{{ site.Params.locations.spain }}</a>
+             </div>
+            </div>
+          </li>
+
+          <li class="block">
+            <div class="flex items-center gap-4">
+              <div class="bg-light/20 w-9 h-9 flex items-center justify-center rounded-full">
+                 <i class="fa-solid fa-location-dot text-white"></i>
+                </div>
+             <div class="w-8/12">
+              <p class="text-text-light">Denmark</p>
+              <a class="text-text-light hover:text-primary transition duration-300"
+              href="{{ site.Params.locations.denmark }}" target="_blank">{{ site.Params.locations.denmark }}</a>
+             </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
-  <div class="border-border  border-t py-7">
+  <div class="bg-light/10 py-5">
     <div class="text-text-light  container text-center">
       <p>
         {{ site.Params.copyright | markdownify }}

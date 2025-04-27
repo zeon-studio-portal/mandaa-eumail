@@ -32,18 +32,39 @@ url = "api/"
 weight = 6
 
 
-# footer menu
-[[footer]]
-name = "About"
-url = "/about"
+# footer menu quick links
+[[quick_links]]
+name = "Send Via API"
+url = "/"
 weight = 1
 
-[[footer]]
-name = "Elements"
-url = "/elements"
+[[quick_links]]
+name = "Send Via SMTP"
+url = "/"
 weight = 2
 
-[[footer]]
-name = "Privacy Policy"
-url = "/privacy-policy"
+[[quick_links]]
+name = "Pricing"
+url = "/"
 weight = 3
+
+
+[[quick_links]]
+name = "Contact"
+url = "contact/"
+weight = 4
+
+[[quick_links]]
+name = "Docs"
+url = "docs/"
+weight = 4
+
+[[legal]]
+name = "Privacy Policy"
+url = "privacy-policy/"
+weight = 1
+
+[[legal]]
+name = "Terms and Conditions"
+url = "terms-and-conditions/"
+weight = 2

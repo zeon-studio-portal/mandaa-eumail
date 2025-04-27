@@ -41,7 +41,7 @@ easy_to_use:
   enable: true
   title: Easy To Use
   list:
-    - title: Create beautiful Emails for your customers
+    - title: Create beautiful Emails for your customers
       image: "/images/easy-to-use-1.png"
       content: |
          Design professional-looking emails with ease using our drag-and-drop builder. Whether you're sending newsletters, promotions, or announcements, our intuitive editor ensures your content looks great on every device. No coding required—just your creativity.
