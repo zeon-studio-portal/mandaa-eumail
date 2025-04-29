@@ -50,7 +50,7 @@
   @apply prose-hr:border-border;
   @apply prose-pre:rounded-none prose-pre:bg-light prose-pre:border-l prose-pre:border-primary prose-pre:py-5 ;
   @apply prose-code:text-text-dark prose-code:text-base ;
-  @apply prose-li:text-text;
+  @apply prose-li:text-text prose-li:marker:text-text-dark prose-li:text-lg;
   @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:border-primary prose-blockquote:bg-light prose-blockquote:px-8 prose-blockquote:py-10 prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-text-dark;
   @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:border-border prose-table:before:content-[""];
   @apply prose-thead:border-border prose-thead:bg-light;

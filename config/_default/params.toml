@@ -12,7 +12,7 @@ logo_webp = true
 # logo text will only show when logo is missing.
 logo_text = "Mandaa EUmail"
 # navbar fixed to top
-navbar_fixed = true
+navbar_fixed = false
 
 # Main Sections
 mainSections = ["documentation"]

@@ -26,18 +26,18 @@
 
     {{/* docs list */}}
     <div class="row gap-y-8">
-      <div class="md:col-4 lg:col-3 ">
-        <div class="sticky top-26">
+      <div class="md:col-4 xl:col-3 ">
+        <div class="sticky top-10 {{if site.Params.navbar_fixed}}top-26{{end}}">
           {{ partial "components/docs-sidebar" . }}
         </div>
       </div>
-      <div class="md:col-8 lg:col-7 px-6">
+      <div class="md:col-8 xl:col-7 px-6">
         <div class="content">
-          {{.Content | markdownify }}
+          {{.Content }}
         </div>
       </div>
-      <div class="lg:col-2">
-        <div class="table-of-contents bg-light rounded-sm sticky top-26">
+      <div class="xl:col-2">
+        <div class="table-of-contents bg-light rounded-sm sticky top-10 {{if site.Params.navbar_fixed}}top-26{{end}}">
           <h3 class="text-lg font-semibold mb-4">{{ T "toc" }}</h3>
           {{.TableOfContents}}
         </div>
@@ -73,7 +73,7 @@ function scrollOnPageLoad(scrollPosition, smooth = true) {
 }
 
 
-scrollOnPageLoad(500*1.5); 
+scrollOnPageLoad(500*1.8); 
 
 
 </script>

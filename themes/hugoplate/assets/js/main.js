@@ -34,3 +34,56 @@
     },
   });
 })();
+
+
+// TOC
+document.addEventListener("DOMContentLoaded", function () {
+
+  const tocLinksFor = document.querySelectorAll(
+    ".table-of-contents a[href^='#']",
+  );
+
+  const activeClasses = ["text-primary!"];
+
+  // Collect all headings that match the TOC links
+  const headings = Array.from(tocLinksFor)
+    .map((link) => {
+      const id = link.getAttribute("href").slice(1);
+      const target = document.getElementById(id);
+      return target ? { id, el: target, link } : null;
+    })
+    .filter(Boolean);
+
+  // Intersection Observer for highlighting
+  const observer = new IntersectionObserver(
+    (entries) => {
+   
+      entries.forEach((entry) => {
+        const id = entry.target.id;
+        
+        const tocLink = document.querySelector(
+          `.table-of-contents a[href="#${id}"]`,
+        );
+       
+        if (entry.isIntersecting && tocLink) {
+        
+          // Remove active classes from all
+          tocLinksFor.forEach((link) =>
+            link.classList.remove(...activeClasses),
+          );
+          // Add to the current one
+          tocLink.classList.add(...activeClasses);
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: "0px 0px -80% 0px",
+      threshold: 0.1,
+    },
+  );
+
+  // Observe all matched headings
+  
+  headings.forEach(({ el }) => observer.observe(el));
+});
