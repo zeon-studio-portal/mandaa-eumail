@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+{{/*  about section  */}}
+{{ with site.GetPage "sections/about" }}
+  {{ if .Params.enable }}
+    <section class="section-sm">
+      <div class="container">
+        <h1 class="text-h2 font-semibold mb-4">{{ .Params.title | markdownify }}</h1>
+        <p class="text-xl font-semibold text-primary">{{ .Params.last_updated | markdownify }}</p>
+        <div class="mt-8 content">
+          {{ .Content | markdownify }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
+
+{{/*  docs section  */}}
+  <section class="section-sm pt-0!">
+    <div class="container">
+      {{/*  search field  */}}
+      <div class="flex items-center justify-between mb-16 gap-4"  aria-label="search" data-target="search-modal">
+        <input type="text" class="form-input" placeholder="Search our Docs section">
+        <button class="btn btn-primary cursor-pointer"> {{T "search"}} </button>
+      </div>
+
+      {{/*  docs list  */}}
+      <div class="row">
+        <div class="col-3">
+          {{ partial "components/docs-sidebar" . }}
+        </div>
+        <div class="col-7">
+          {{.Content}}
+        </div>
+        <div class="col-2">
+          {{.TableOfContents}}
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

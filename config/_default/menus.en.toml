@@ -22,8 +22,8 @@ url = "contact/"
 weight = 4
 
 [[main]]
-name = "Docs"
-url = "docs/"
+name = "Documentation"
+url = "documentation/introduction/readme/"
 weight = 5
 
 [[main]]
@@ -55,8 +55,8 @@ url = "contact/"
 weight = 4
 
 [[quick_links]]
-name = "Docs"
-url = "docs/"
+name = "Documentation"
+url = "documentation/introduction/readme"
 weight = 4
 
 [[legal]]

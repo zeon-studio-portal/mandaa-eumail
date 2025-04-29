@@ -1,0 +1,95 @@
+<nav class="bg-light/60 px-4 py-6 rounded-sm">
+  <ul class="flex flex-col">
+
+    {{ range where .Site.Pages "Section" "documentation" }}
+    {{ if .IsSection }}
+    {{ if ne .Title "Documentation" }}
+    <li class="mb-6 ">
+      <div class="flex items-center justify-between cursor-pointer" onclick="toggleSidebar(this)">
+        <h6 class="font-semibold texxt-lg cursor-pointer">{{ .Title }}</h6>
+        {{ if .RegularPages }}
+        <div><i class="fas fa-chevron-right"></i></div>
+        {{ end }}
+      </div>
+      <div class="doc-sidebar-nav-items" style="display: none;">
+        {{ range .RegularPages }}
+        <div class="pl-4">
+          <div class="mt-3">
+            <a class="sidebar-link {{ if eq .Permalink $.Permalink }} active {{ end }}" href="{{ .RelPermalink }}">
+              {{ .Title }}
+            </a>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </li>
+    {{ end }}
+    {{ end }}
+    {{ end }}
+  </ul>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    restoreSidebarState();
+    restoreToCState();
+    autoOpenToC();
+  });
+
+  function toggleSidebar(element) {
+    let items = element.nextElementSibling;
+    let icon = element.querySelector("i");
+    let sectionId = element.querySelector("h6").textContent.trim();
+
+    if (!items.classList.contains("open")) {
+      items.style.display = "block";
+      setTimeout(() => items.classList.add("open"), 10);
+      icon.classList.add("rotate-icon", "down");
+      localStorage.setItem(`sidebar_${sectionId}`, "open");
+    } else {
+      items.classList.remove("open");
+      icon.classList.remove("down");
+      setTimeout(() => items.style.display = "none", 300);
+      localStorage.setItem(`sidebar_${sectionId}`, "closed");
+    }
+  }
+
+
+
+  function restoreSidebarState() {
+    document.querySelectorAll(".docs-sidebar-nav-title").forEach(function (title) {
+      let sectionId = title.querySelector("h6").textContent.trim();
+      let savedState = localStorage.getItem(`sidebar_${sectionId}`);
+      let items = title.nextElementSibling;
+      let icon = title.querySelector("i");
+
+      // Check if this section contains an active link
+      let hasActivePage = items.querySelector(".sidebar-link.active");
+
+      if (savedState === "open" || hasActivePage) {
+        items.style.display = "block";
+        items.classList.add("open");
+        icon.classList.add("rotate-icon", "down");
+      }
+    });
+  }
+
+  function restoreToCState() {
+    document.querySelectorAll(".docs-navbar-tableofcontents").forEach(function (toc) {
+      let tocId = toc.closest(".sidebar-item").querySelector(".sidebar-link").textContent.trim();
+      let icon = toc.previousElementSibling.querySelector(".toc-toggle");
+
+    });
+
+    document.querySelectorAll(".docs-navbar-tableofcontents").forEach(function (toc) {
+      let hasList = toc.querySelector("ul");
+      let iconWrapper = toc.previousElementSibling.querySelector(".toc-icon-wrapper");
+      if (hasList && iconWrapper) {
+        iconWrapper.style.display = "inline";
+      }
+    });
+  }
+
+
+
+</script>

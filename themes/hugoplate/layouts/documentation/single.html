@@ -1,0 +1,80 @@
+{{ define "main" }}
+
+{{/* about section */}}
+{{ with site.GetPage "sections/about" }}
+{{ if .Params.enable }}
+<section class="section-sm">
+  <div class="container">
+    <h1 class="text-h2 font-semibold mb-4">{{ .Params.title | markdownify }}</h1>
+    <p class="text-xl font-semibold text-primary">{{ .Params.last_updated | markdownify }}</p>
+    <div class="mt-8 content">
+      {{ .Content | markdownify }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+{{/* docs section */}}
+<section class="section-sm pt-0!">
+  <div class="container">
+    {{/* search field */}}
+    <div class="flex items-center justify-between mb-16 gap-4" aria-label="search" data-target="search-modal">
+      <input type="text" class="form-input" placeholder="Search our Docs section">
+      <button class="btn btn-primary cursor-pointer"> {{T "search"}} </button>
+    </div>
+
+    {{/* docs list */}}
+    <div class="row gap-y-8">
+      <div class="md:col-4 lg:col-3 ">
+        <div class="sticky top-26">
+          {{ partial "components/docs-sidebar" . }}
+        </div>
+      </div>
+      <div class="md:col-8 lg:col-7 px-6">
+        <div class="content">
+          {{.Content | markdownify }}
+        </div>
+      </div>
+      <div class="lg:col-2">
+        <div class="table-of-contents bg-light rounded-sm sticky top-26">
+          <h3 class="text-lg font-semibold mb-4">{{ T "toc" }}</h3>
+          {{.TableOfContents}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  /**
+ * Scrolls to a specific pixel position when the page loads
+ * @param {number} scrollPosition - The number of pixels to scroll from the top
+ * @param {boolean} smooth - Whether to use smooth scrolling (default: true)
+ */
+function scrollOnPageLoad(scrollPosition, smooth = true) {
+  // Function to handle the scrolling
+  function performScroll() {
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: smooth ? 'smooth' : 'auto'
+    });
+    console.log(`Scrolled to position ${scrollPosition}px`);
+  }
+  
+  // Check if DOM is already loaded
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    // If already loaded, scroll immediately
+    setTimeout(performScroll, 100); // Small delay to ensure everything is rendered
+  } else {
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', performScroll);
+  }
+}
+
+
+scrollOnPageLoad(500*1.5); 
+
+
+</script>
+{{ end }}

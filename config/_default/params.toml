@@ -15,7 +15,7 @@ logo_text = "Mandaa EUmail"
 navbar_fixed = true
 
 # Main Sections
-mainSections = ["docs"]
+mainSections = ["documentation"]
 # contact form action
 contact_form_action = "#" # contact form works with [https://airform.io/] or [https://formspree.io]
 # google tag manager, see https://developers.google.com/tag-manager/
@@ -51,7 +51,7 @@ link = "https://app.mandaa.io/login"
 [search]
 enable = true
 primary_color = "#121212"
-include_sections = ["docs"]
+include_sections = ["documentation"]
 show_image = true
 show_description = true
 show_tags = true
