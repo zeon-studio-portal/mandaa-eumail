@@ -1,3 +1,4 @@
+{{ $pageURL:= .Permalink | absLangURL }}
 <nav class="bg-light/80 px-4 pt-6 rounded-sm">
   <ul class="flex flex-col">
 
@@ -5,7 +6,8 @@
     {{ if .IsSection }}
     {{ if ne .Title "Documentation" }}
     <li class="mb-6 ">
-      <div class="flex items-center justify-between cursor-pointer docs-sidebar-nav-title" onclick="toggleSidebar(this)" >
+      <div class="flex items-center justify-between cursor-pointer docs-sidebar-nav-title"
+        onclick="toggleSidebar(this)">
         {{ if .RegularPages }}
         <h6 class="font-semibold text-lg cursor-pointer">{{ .Title }}</h6>
         <div><i class="fas fa-chevron-right"></i></div>
@@ -17,7 +19,11 @@
         {{ range .RegularPages }}
         <div class="pl-4">
           <div class="mt-3">
-            <a class="sidebar-link {{ if eq .Permalink $.Permalink }} active {{ end }}" href="{{ .RelPermalink }}">
+            {{$currentLink := .Permalink | absLangURL}}
+            {{$pageURL := $.Permalink | absLangURL}}
+            {{ $active := eq $currentLink $pageURL }}
+            
+            <a class="sidebar-link {{ if $active }} text-primary {{ end }}" href="{{ .RelPermalink }}">
               {{ .Title }}
             </a>
           </div>
@@ -36,40 +42,112 @@
     restoreSidebarState();
   });
 
+  /**
+   * Toggles the sidebar section visibility
+   * @param {HTMLElement} element - The sidebar title element
+   */
   function toggleSidebar(element) {
+    // Check if element exists to prevent errors
+    if (!element) return;
+
     let items = element.nextElementSibling;
     let icon = element.querySelector("i");
-    let sectionId = element.querySelector("h6").textContent.trim();
+    let sectionId = "";
+
+    // Get section ID safely
+    const headerElement = element.querySelector("h6");
+    if (headerElement && headerElement.textContent) {
+      sectionId = headerElement.textContent.trim();
+    } else {
+      // Fallback if h6 element or its content is missing
+      sectionId = element.id || "section-" + Math.random().toString(36).substr(2, 5);
+    }
+
+    // Check if items element exists
+    if (!items) return;
 
     if (!items.classList.contains("open")) {
+      // Opening the sidebar
       items.style.display = "block";
+
+      // Small delay ensures the transition applies after display change
       setTimeout(() => items.classList.add("open"), 10);
-      icon.classList.add("rotate-icon", "down");
-      localStorage.setItem(`sidebar_${sectionId}`, "open");
+
+      // Update icon if it exists
+      if (icon) icon.classList.add("rotate-icon", "down");
+
+      // Save state with error handling
+      try {
+        localStorage.setItem(`sidebar_${sectionId}`, "open");
+      } catch (e) {
+        // Silent fail for private browsing mode
+      }
     } else {
+      // Closing the sidebar
       items.classList.remove("open");
-      icon.classList.remove("down");
+
+      // Update icon if it exists
+      if (icon) icon.classList.remove("down");
+
+      // Delay hiding until transition completes
       setTimeout(() => items.style.display = "none", 300);
-      localStorage.setItem(`sidebar_${sectionId}`, "closed");
+
+      // Save state with error handling
+      try {
+        localStorage.setItem(`sidebar_${sectionId}`, "closed");
+      } catch (e) {
+        // Silent fail for private browsing mode
+      }
     }
   }
 
-
-
+  /**
+   * Restores sidebar states from localStorage
+   */
   function restoreSidebarState() {
-    document.querySelectorAll(".docs-sidebar-nav-title").forEach(function (title) {
-      let sectionId = title.querySelector("h6").textContent.trim();
-      let savedState = localStorage.getItem(`sidebar_${sectionId}`);
+    // Check if sidebar elements exist
+    const sidebarTitles = document.querySelectorAll(".docs-sidebar-nav-title");
+    if (!sidebarTitles || sidebarTitles.length === 0) return;
+
+    sidebarTitles.forEach(function (title) {
+      if (!title) return;
+
+      // Get section ID safely
+      let sectionId = "";
+      const headerElement = title.querySelector("h6");
+      if (headerElement && headerElement.textContent) {
+        sectionId = headerElement.textContent.trim();
+      } else {
+        // Skip this section if we can't identify it
+        return;
+      }
+
       let items = title.nextElementSibling;
       let icon = title.querySelector("i");
+
+      // Skip if items element is missing
+      if (!items) return;
+
+      // Get saved state with error handling
+      let savedState = null;
+      try {
+        savedState = localStorage.getItem(`sidebar_${sectionId}`);
+      } catch (e) {
+        // Silent fail for private browsing mode
+      }
 
       // Check if this section contains an active link
       let hasActivePage = items.querySelector(".sidebar-link.active");
 
       if (savedState === "open" || hasActivePage) {
         items.style.display = "block";
-        items.classList.add("open");
-        icon.classList.add("rotate-icon", "down");
+
+        // Small delay ensures proper rendering
+        setTimeout(() => {
+          items.classList.add("open");
+          // Update icon if it exists
+          if (icon) icon.classList.add("rotate-icon", "down");
+        }, 0);
       }
     });
   }

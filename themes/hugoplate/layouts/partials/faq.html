@@ -1,0 +1,18 @@
+{{/* FAQ */}}
+{{ with site.GetPage "sections/faq" }}
+{{ if .Params.enable }}
+<section class="section">
+  <div class="container">
+    <div class="text-center md:w-7/12 mx-auto mb-16">
+      <h2 class="sm:text-h1 font-bold mb-4">{{ .Params.title | markdownify }}</h2>
+      <p class="sm:text-xl">{{ .Params.description | markdownify }}</p>
+    </div>
+    <div class="bg-white shadow-lg rounded-lg py-10 sm:py-20 px-8 sm:px-14">
+      <div class="content">
+        {{.Content}}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}

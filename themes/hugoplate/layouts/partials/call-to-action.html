@@ -3,8 +3,8 @@
 {{ if .Params.enable }}
 <section class="section-sm bg-primary">
   <div class="container">
-    <div class="w-7/12 mx-auto text-center">
-      <h2 class="mb-6 text-white text-h1">{{ .Params.title | markdownify }}</h2>
+    <div class="md:w-7/12 mx-auto text-center">
+      <h2 class="mb-6 text-white lg:text-h1">{{ .Params.title | markdownify }}</h2>
       <p class="text-white mb-10">{{ .Params.description | markdownify }}</p>
       <div>
         {{ if .Params.button.enable }}

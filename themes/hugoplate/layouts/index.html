@@ -70,9 +70,9 @@
 
     <div class="row">
       <div class="lg:col-7 order-2 lg:order-1">
-        <div class="row items-center">
+        <div class="row">
           {{ range $i, $e:= .features_list }}
-          <div class="md:col-6 mb-8 order">
+          <div class="md:col-6 mb-8">
             <div class="bg-primary/10 py-9 px-6 rounded-xl h-full" data-aos="fade-up" data-aos-duration="{{ add (mul 200 (add $i 1)) 100 }}">
               <div class="icon">
                 {{ partial "image" (dict "Src" .icon "Size" "50x50" "Class" "w-[35px] mb-6" "Alt" .title) }}

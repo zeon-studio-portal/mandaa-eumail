@@ -40,12 +40,12 @@ weight = 1
 
 [[quick_links]]
 name = "Send Via SMTP"
-url = "/"
+url = "send-via-smtp/"
 weight = 2
 
 [[quick_links]]
 name = "Pricing"
-url = "/"
+url = "pricing/"
 weight = 3
 
 
@@ -56,7 +56,7 @@ weight = 4
 
 [[quick_links]]
 name = "Documentation"
-url = "documentation/introduction/readme"
+url = "/documentation/introduction/readme"
 weight = 4
 
 [[legal]]

@@ -4,7 +4,7 @@
 {{ with .Params.contact_form }}
 <section class="mb-30">
   <div class="container">
-    <div class="bg-white shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] p-10 md:p-20 rounded-lg">
+    <div class="bg-white shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] p-10 md:p-20 rounded-lg" data-aos="fade-up">
       <div class="row gap-y-10">
         <div class="lg:col-5">
           <span class="text-primary mb-4 block">{{ .head | markdownify }}</span>
@@ -12,7 +12,7 @@
           <p class="text-text-dark text-lg">{{ .description | markdownify }}</p>
         </div>
         <div class="lg:col-7 lg:pl-10">
-          <form action="">
+          <form action="{{site.Params.contact_form.action}}" method="POST">
             <div class="row">
               {{/* full name */}}
               <div class="sm:col-6 mb-6">
@@ -87,9 +87,10 @@
       <p class="text-lg">{{ .description | markdownify }}</p>
     </div>
     <div class="row gap-y-8">
-      {{ range .contact_list }}
+      {{ range $i, $e := .contact_list }}
       <div class="md:col-6 lg:col-4">
-        <div class="bg-white shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] p-10 rounded-lg flex flex-col items-center text-center h-full">
+        <div class="bg-white shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] p-10 rounded-lg flex flex-col items-center text-center h-full" data-aos="fade-up" data-aos-delay="{{ add (mul 100 $i) 50 }}">
+        
           <div class="h-10 w-10 mb-4 bg-light rounded-full flex items-center justify-center"><i class="{{ .icon }} text-primary text-lg"></i></div>
           <h3 class="text-h5 font-semibold mb-4">{{ .title }}</h3>
           <p class="text-text-dark text-lg">{{ .value | markdownify }}</p>

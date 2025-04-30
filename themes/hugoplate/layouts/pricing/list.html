@@ -5,10 +5,10 @@
 <section class="section">
   <div class="container">
     <div class="row gap-y-6">
-      {{ range .Params.price_plans }}
+      {{ range $i, $e := .Params.price_plans }}
       <div class="md:col-6 lg:col-4">
         <div
-          class="rounded-xl shadow-md bg-white p-8 {{ if .highlight }} bg-primary! text-white! {{end}} h-full flex flex-col justify-between relative overflow-hidden">
+          class="rounded-xl shadow-md bg-white p-8 {{ if .highlight }} bg-primary! text-white! {{end}} h-full flex flex-col justify-between relative overflow-hidden" data-aos="fade-up" data-aos-duration="{{ add $i 1 | mul 300 }}">
           {{ if .highlight }}
           <div class="bg-[#11A75C] shadow-md absolute top-10 md:top-8 -right-15 md:-right-12 px-4 py-1 text-sm text-center transform rotate-45 w-[180px]">{{.badge}}</div>
           {{ end }}

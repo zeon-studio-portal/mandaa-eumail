@@ -6,13 +6,15 @@
     <div class="container">
         <div class="row gy-5 items-center">
             <div class="md:col-6 lg:col-7 order-2 md:order-1 text-center md:text-start">
-                <h1 class="font-bold mb-4 lg:text-[80px]">{{ .title | safeHTML | markdownify }}</h1>
-                <p class="text-text-dark mb-10 text-lg font-medium">{{ .content | safeHTML | markdownify }}</p>
+                <h1 class="font-bold mb-4 lg:text-[80px]" data-aos="fade-up">{{ .title | safeHTML | markdownify }}</h1>
+                <p class="text-text-dark mb-10 text-lg font-medium" data-aos="fade-up" data-aos-delay="50">{{ .content | safeHTML | markdownify }}</p>
                 {{ with .button }}
-                <a href="{{ .link | absLangURL }}" class="btn btn-primary btn-lg">{{ .label }}</a>
+                <a href="{{ .link | absLangURL }}" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="100">{{ .label }}</a>
                 {{ end }}
             </div>
-            <div class="md:col-6 lg:col-5 order-1 md:order-2 flex justify-center relative">
+            <div class="md:col-6 lg:col-5 order-1 md:order-2">
+              <div class="w-full flex justify-center relative" data-aos="fade-up" data-aos-delay="150">
+                
                 {{ partial "image.html" (dict "Src" .image "Alt" "banner-image" "Class" "w-[250px] md:w-[330px]" "Size"
                 "330x")
                 }}
@@ -23,6 +25,7 @@
                     class="flex absolute top-30 right-24  md:right-16 z-10 bg-[#155063] rounded-full w-[78px] h-[78px] items-center justify-center">
                     <img src="/images/monitor.png" alt="document" class="w-[35px]">
                 </div>
+              </div>
             </div>
         </div>
     </div>

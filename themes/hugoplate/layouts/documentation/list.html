@@ -13,12 +13,12 @@
 
     {{/* docs list */}}
     <div class="row">
-      <div class="col-3">
+      <div class="lg:col-3">
         <div class="sticky top-10 {{if site.Params.navbar_fixed}}top-26{{end}}">
           {{ partial "components/docs-sidebar" . }}
         </div>
       </div>
-      <div class="col-9">
+      <div class="lg:col-9">
         <div class="content">
           {{.Content}}
         </div>
@@ -29,22 +29,5 @@
 </section>
 
 {{/* FAQ */}}
-{{ with site.GetPage "sections/faq" }}
-{{ if .Params.enable }}
-
-<section class="section">
-  <div class="container">
-    <div class="text-center md:w-6/12 mx-auto mb-16">
-      <h2 class="text-h1 font-bold mb-4">{{ .Params.title | markdownify }}</h2>
-      <p class="text-xl">{{ .Params.description | markdownify }}</p>
-    </div>
-    <div class="bg-white shadow-lg rounded-lg py-20 px-14">
-      <div class="content">
-        {{.Content}}
-      </div>
-    </div>
-  </div>
-</section>
-{{ end }}
-{{ end }}
+{{ partial "faq"  }}
 {{ end }}
