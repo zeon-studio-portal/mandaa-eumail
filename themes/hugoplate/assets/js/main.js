@@ -33,6 +33,13 @@
       },
     },
   });
+
+ // ----------------------------
+    // AOS
+    // ----------------------------
+    AOS.init({
+      once: true
+    });
 })();
 
 
@@ -105,3 +112,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+

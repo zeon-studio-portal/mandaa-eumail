@@ -23,7 +23,7 @@ weight = 4
 
 [[main]]
 name = "Documentation"
-url = "documentation/introduction/readme/"
+url = "documentation/"
 weight = 5
 
 [[main]]
