@@ -55,7 +55,7 @@ Read more about
 - [Dynamic templates](/documentation/templates/dynamic_templates/)
 - [Eumail integration](/documentation/integrations/integrations-intro/)
 - [How to send your first API email](/documentation/getting-started/first_email_via_api/)
-- [EUmail send API]("https://mandaa.io/apidoc/index.html")
+- [EUmail send API](https://mandaa.io/apidoc/index.html)
 
 ---
 

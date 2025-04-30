@@ -34,4 +34,4 @@ Apart from information about how to get started using EUmail we have divided our
 
 If you haven’t already done so you can sign up to Mandaa EUmail by clicking this link:
 
-[Click here to sign up]("https://app.mandaa.io/login")
+[Click here to sign up](https://app.mandaa.io/login)

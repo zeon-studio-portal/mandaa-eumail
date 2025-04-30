@@ -15,15 +15,15 @@ draft: false
 
 This configuration guide asumes that you have already created and activated your EUmail account and are logged in. If that is not the case, then click the following link to create your new account.
 
-[Click here to create a EUmail account]("https://app.mandaa.io/signup")
+[Click here to create a EUmail account](https://app.mandaa.io/signup)
 
 ### Domain definition
 
-The following guide assumes that you already have a domain that you own - for example mydomain.com - and that you want to sent transactional email from this domain as for example [sales@mydomain.com]("mailto:sales@mydomain.com") . You need to control DNS for the domain you want to use, so you cannot use domains than belong to others like gmail.com or hotmail.com.
+The following guide assumes that you already have a domain that you own - for example mydomain.com - and that you want to sent transactional email from this domain as for example [sales@mydomain.com](mailto:sales@mydomain.com) . You need to control DNS for the domain you want to use, so you cannot use domains than belong to others like gmail.com or hotmail.com.
 
 If you do not have a domain then you will need to aquire this online before you continue.
 
-Go to [EUmail domains page]("https://app.mandaa.io/domains")
+Go to [EUmail domains page](https://app.mandaa.io/domains)
 
 Click on the button in the upper right corner to add a domain ![Add domain](add-domain-button.png).
 
@@ -87,7 +87,7 @@ When enabled EUmail will try to track if the emails you send are opened. Some em
 
 #### API token
 
-Go to the menu and select the API keys menu or click here [API keys]("https://app.mandaa.io/integrations/api_tokens") Click the “Create API Key” button and enter the API key name – for example “API demo key”. Then click the “Create & View”
+Go to the menu and select the API keys menu or click here [API keys](https://app.mandaa.io/integrations/api_tokens) Click the “Create API Key” button and enter the API key name – for example “API demo key”. Then click the “Create & View”
 
 button ![](api-key-step1.png) You will now be shown a message saying that that the key has been generated. Copy the key using the copy button and keep it safe as it is needed later. You will not be able to see it again ever in EUmail, but you can always make a new one if you loose the key.
 
