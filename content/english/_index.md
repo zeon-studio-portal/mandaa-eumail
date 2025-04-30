@@ -18,7 +18,7 @@ features:
   button:
     enable: true
     label: "Get Started Now"
-    link: "#"
+    link: "pricing"
   image: "images/feature-image.svg"
   features_list:
     - title: "Standard EU DPA contract"
