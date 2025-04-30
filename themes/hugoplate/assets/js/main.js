@@ -38,7 +38,9 @@
     // AOS
     // ----------------------------
     AOS.init({
-      once: true
+      once: true,
+      disable: "mobile",
+      duration: 700,
     });
 })();
 

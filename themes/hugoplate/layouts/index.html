@@ -28,13 +28,13 @@
   <div class="container">
     <div class="row gy-5 items-center">
       <div class="md:col-6 lg:col-7 order-2 md:order-1 text-center md:text-start">
-        <h1 class="text-white font-bold mb-4 lg:text-[80px]"  >{{ .title | safeHTML | markdownify }}</h1>
+        <h1 class="text-white font-bold mb-4 lg:text-[80px]">{{ .title | safeHTML | markdownify }}</h1>
         <p class="text-white mb-10 text-lg font-medium">{{ .content | safeHTML | markdownify }}</p>
         {{ with .button }}
         <a href="{{ .link | absLangURL }}" class="btn btn-primary btn-lg">{{ .label }}</a>
         {{ end }}
       </div>
-      <div class="md:col-6 lg:col-5 order-1 md:order-2 flex justify-center relative">
+      <div class="md:col-6 lg:col-5 order-1 md:order-2 flex justify-center relative" >
         {{ partial "image.html" (dict "Src" .image "Alt" "banner-image" "Class" "w-[250px] md:w-[330px]" "Size" "330x")
         }}
         <div class="block absolute bottom-30 right-20 md:right-12 z-10 bg-[#155063] rounded-2xl w-[100px] h-[90px]">
@@ -71,9 +71,9 @@
     <div class="row">
       <div class="lg:col-7 order-2 lg:order-1">
         <div class="row items-center">
-          {{ range .features_list }}
+          {{ range $i, $e:= .features_list }}
           <div class="md:col-6 mb-8 order">
-            <div class="bg-primary/10 py-9 px-6 rounded-xl h-full">
+            <div class="bg-primary/10 py-9 px-6 rounded-xl h-full" data-aos="fade-up" data-aos-duration="{{ add (mul 200 (add $i 1)) 100 }}">
               <div class="icon">
                 {{ partial "image" (dict "Src" .icon "Size" "50x50" "Class" "w-[35px] mb-6" "Alt" .title) }}
               </div>
@@ -85,7 +85,9 @@
         </div>
       </div>
       <div class="lg:col-5 flex items-center justify-center order-1 lg:order-2">
-        {{ partial "image" (dict "Src" .image "Alt" "feature-image" "Class" "w-full rounded-lg") }}
+        <div class="w-full" data-aos="fade-up">
+          {{ partial "image" (dict "Src" .image "Alt" "feature-image" "Class" "w-full rounded-lg") }}
+        </div>
       </div>
     </div>
   </div>
@@ -108,7 +110,9 @@
       <div class="lg:col-7 {{ if not (modBool $i 2) }}
               lg:order-2
             {{ end }} ">
+      <div class="w-full" {{ if not (modBool $i 2) }} data-aos="fade-left" {{else}} data-aos="fade-right" {{end}}>
         {{ partial "image" (dict "Src" .image "Alt" .title "Class" "w-full") }}
+      </div>
       </div>
       <div class="lg:col-5 {{ if not (modBool $i 2) }}
               lg:order-1
@@ -137,8 +141,8 @@
       </p>
     </div>
     <div class="row">
-      {{ range .list }}
-      <div class="md:col-6 lg:col-4 xl:col-3 mb-8">
+      {{ range $i, $e:= .list }}
+      <div class="md:col-6 lg:col-4 xl:col-3 mb-8" data-aos="fade-up" data-aos-duration="{{ add (mul 200 (add $i 1)) 100 }}">
         <div class="bg-white h-full shadow-[0px_4px_40px_10px_rgba(0,0,0,0.05)] py-10 px-6 rounded-xl flex flex-col items-center text-center">
           <div class="bg-primary/10 rounded-lg p-4 mb-6">
             {{ partial "image" (dict "Src" .icon "Size" "50x50" "Class" "w-[35px]" "Alt" .title) }}
