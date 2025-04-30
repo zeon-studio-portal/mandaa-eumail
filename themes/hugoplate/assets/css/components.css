@@ -46,7 +46,7 @@
   @apply prose-p:text-base prose-p:text-text;
   @apply prose-a:text-primary prose-a:text-lg prose-a:font-medium prose-a:no-underline;
   @apply prose-img:max-w-full prose-img:rounded;
-  @apply prose-strong:text-text-dark;
+  @apply prose-strong:font-bold prose-strong:text-lg prose-strong:text-primary;
   @apply prose-hr:border-border;
   @apply prose-pre:rounded-none prose-pre:bg-light prose-pre:border-l prose-pre:border-primary prose-pre:py-5 ;
   @apply prose-code:text-text-dark prose-code:text-base ;

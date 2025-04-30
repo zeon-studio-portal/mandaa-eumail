@@ -85,7 +85,7 @@ maxAge = "720h"
 unsafe = true
 
 [markup.highlight]
-style = 'github' # see https://xyproto.github.io/splash/docs/all.html
+style = 'friendly' # see https://xyproto.github.io/splash/docs/all.html
 lineNumbersInTable = false
 
 [markup.tableOfContents]

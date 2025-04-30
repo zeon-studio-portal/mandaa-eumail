@@ -49,7 +49,7 @@
           {{ if .button.enable }}
           <div class="mt-6">
             <a href="{{ .button.link }}"
-              class="btn {{ if .highlight }} bg-white text-text-dark {{else}} btn-outline-primary {{end}}  w-full text-center text-lg">{{
+              class="btn {{ if .highlight }} bg-white text-text-dark border border-border hover:bg-transparent hover:text-white {{else}} btn-outline-primary {{end}}  w-full text-center text-lg">{{
               .button.label }}</a>
           </div>
           {{ end }}

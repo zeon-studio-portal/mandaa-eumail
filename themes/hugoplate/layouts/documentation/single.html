@@ -1,22 +1,9 @@
 {{ define "main" }}
 
-{{/* about section */}}
-{{ with site.GetPage "sections/about" }}
-{{ if .Params.enable }}
-<section class="section-sm">
-  <div class="container">
-    <h1 class="text-h2 font-semibold mb-4">{{ .Params.title | markdownify }}</h1>
-    <p class="text-xl font-semibold text-primary">{{ .Params.last_updated | markdownify }}</p>
-    <div class="mt-8 content">
-      {{ .Content | markdownify }}
-    </div>
-  </div>
-</section>
-{{ end }}
-{{ end }}
+{{ partial "page-header" . }}
 
 {{/* docs section */}}
-<section class="section-sm pt-0!">
+<section class="section-sm pt-5">
   <div class="container">
     {{/* search field */}}
     <div class="flex items-center justify-between mb-16 gap-4" aria-label="search" data-target="search-modal">
@@ -46,35 +33,24 @@
   </div>
 </section>
 
-<script>
-  /**
- * Scrolls to a specific pixel position when the page loads
- * @param {number} scrollPosition - The number of pixels to scroll from the top
- * @param {boolean} smooth - Whether to use smooth scrolling (default: true)
- */
-function scrollOnPageLoad(scrollPosition, smooth = true) {
-  // Function to handle the scrolling
-  function performScroll() {
-    window.scrollTo({
-      top: scrollPosition,
-      behavior: smooth ? 'smooth' : 'auto'
-    });
-    console.log(`Scrolled to position ${scrollPosition}px`);
-  }
-  
-  // Check if DOM is already loaded
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    // If already loaded, scroll immediately
-    setTimeout(performScroll, 100); // Small delay to ensure everything is rendered
-  } else {
-    // Wait for the DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', performScroll);
-  }
-}
+{{/* FAQ */}}
+{{ with site.GetPage "sections/faq" }}
+{{ if .Params.enable }}
 
+<section class="section">
+  <div class="container">
+    <div class="text-center md:w-6/12 mx-auto mb-16">
+      <h2 class="text-h1 font-bold mb-4">{{ .Params.title | markdownify }}</h2>
+      <p class="text-xl">{{ .Params.description | markdownify }}</p>
+    </div>
+    <div class="bg-white shadow-lg rounded-lg py-20 px-14">
+      <div class="content">
+        {{.Content}}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
 
-scrollOnPageLoad(500*1.8); 
-
-
-</script>
 {{ end }}

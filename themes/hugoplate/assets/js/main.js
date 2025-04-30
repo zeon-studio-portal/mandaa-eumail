@@ -87,3 +87,21 @@ document.addEventListener("DOMContentLoaded", function () {
   
   headings.forEach(({ el }) => observer.observe(el));
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("pre > code").forEach((codeBlock) => {
+    codeBlock.parentElement.classList.add("relative");
+    const button = document.createElement("button");
+    button.innerText = "Copy";
+    button.className = "btn btn-sm btn-outline-primary block cursor-pointer absolute right-2 top-1 z-10";
+    codeBlock.parentNode.insertBefore(button, codeBlock);
+
+    button.addEventListener("click", () => {
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        button.innerText = "Copied!";
+        setTimeout(() => (button.innerText = "Copy"), 1500);
+      });
+    });
+  });
+});

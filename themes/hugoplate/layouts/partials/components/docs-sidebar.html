@@ -6,9 +6,11 @@
     {{ if ne .Title "Documentation" }}
     <li class="mb-6 ">
       <div class="flex items-center justify-between cursor-pointer" onclick="toggleSidebar(this)">
-        <h6 class="font-semibold texxt-lg cursor-pointer">{{ .Title }}</h6>
         {{ if .RegularPages }}
+        <h6 class="font-semibold text-lg cursor-pointer">{{ .Title }}</h6>
         <div><i class="fas fa-chevron-right"></i></div>
+        {{else}}
+        <a class="font-semibold text-lg cursor-pointer" href="{{ .Permalink }}">{{ .Title }}</a>
         {{ end }}
       </div>
       <div class="doc-sidebar-nav-items" style="display: none;">

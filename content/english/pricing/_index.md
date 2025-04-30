@@ -10,7 +10,7 @@ price_plans:
     period: Monthly
     description: Contact sales to extend trial period
     badge: 1 month
-    highlight: true
+    highlight: false
     features:
       - "Dynamic templates"
       - "Visual template editor"
@@ -27,8 +27,8 @@ price_plans:
     price: "€15"
     period: Monthly
     description: Includes DPA agreement
-    badge: 1 month
-    highlight: false
+    badge: Popular
+    highlight: true
     features:
       - "Dynamic templates"
       - "Visual template editor"

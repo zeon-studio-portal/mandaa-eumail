@@ -71,3 +71,20 @@
 .table-of-contents #TableOfContents a{
   @apply inline-block mb-4;
 }
+
+/* faq-acccordion */
+.faq-accordion {
+  @apply bg-transparent border-none mb-0;
+}
+.faq-accordion .accordion-header {
+  @apply w-auto flex-row-reverse text-right gap-2 text-xl font-semibold;
+}
+.faq-accordion .accordion-icon{
+  transform: rotate(0deg); 
+}
+.faq-accordion .accordion-content{
+  @apply bg-light ml-4 px-6;
+}
+.faq-accordion .accordion-content p{
+  @apply text-text-dark text-lg;
+}
