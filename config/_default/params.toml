@@ -17,7 +17,7 @@ navbar_fixed = false
 # Main Sections
 mainSections = ["documentation"]
 # contact form action
-contact_form_action = "https://formsubmit.co/istiak.themefisher@gmail.com" # contact form works with [https://airform.io/] or [https://formspree.io]
+contact_form_action = "https://formsubmit.co/tss832@gmail.com" # contact form works with [https://airform.io/] or [https://formspree.io]
 
 # copyright
 copyright = "Copyright © 2025. Mandaa EUmail"
