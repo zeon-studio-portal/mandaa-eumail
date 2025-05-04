@@ -1,0 +1,213 @@
+openapi: 3.1.0
+
+info:
+  title: Email Sender API
+  description: Sender API for public use
+  version: 1.0.0
+  contact:
+    name: Mandaa Support
+    email: support@mandaa.io
+    url: https://mandaa.io/contact/
+  x-logo:
+    url: 'https://mandaa.io/wp-content/uploads/2023/08/Mandaa-EUmail-1200x628-1.png'
+    altText: Mandaa EUmail logo 
+
+servers:
+  - url: https://send.mandaa.io[:{port}]
+    description: Production
+    variables:
+      port:
+        default: '4000'
+
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /mail/v1/send:
+    post:
+      summary: Allow a user to send an email
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - recipients
+                - parameters
+              properties:
+                recipients:
+                  type: object
+                  required:
+                    - to
+                  properties:
+                    to:
+                      type: array
+                      items:
+                        type: object
+                        required:
+                          - email
+                        properties:
+                          email:
+                            type: string
+                            example: 'cc.john.doe@example.com'
+                    cc:
+                      type: array
+                      items:
+                        type: object
+                        required:
+                          - email
+                        properties:
+                          email:
+                            type: string
+                            example: 'cc.john.doe@example.com'
+                    bcc:
+                      type: array
+                      items:
+                        type: object
+                        required:
+                          - email
+                        properties:
+                          email:
+                            type: string
+                            example: 'cc.john.doe@example.com'
+                parameters:
+                  type: object
+                  properties:
+                    template:
+                      type: string
+                      example: '356de8e8-2a1e-4f70-ac27-fca50b77c2a6'
+                    version:
+                      type: integer
+                    subject:
+                      type: string
+                      example: 'My email subject'
+                    template_html:
+                      type: string
+                      example: 'Hello, {{name}}'
+                mergedata:
+                  type: object
+                attachments:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - content
+                    properties:
+                      content:
+                        type: string
+                        example: 'MQo='
+                      type:
+                        type: string
+                        example: 'text/plain'
+                      filename:
+                        type: string
+                        example: 'test1.txt'
+                      disposition:
+                        type: string
+                        enum: [inline,attachment]
+                        example: 'inline'
+                      content_id:
+                        type: string
+                        example: 'test_id'
+                send_mode:
+                  type: string
+                  nullable: true
+                  enum: [normal, campaign, null]
+                from:
+                  type: string
+                  example: 'from@example.com'
+                reply_to:
+                  type: string
+                  example: 'reply-to@example.com'
+
+      responses:
+        202:
+          description: A message was successfully sent to the postfix service
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  request_id:
+                    type: string
+                    description: Id for the send request (a single request can send several messages)
+                  message_ids:
+                    type: array
+                    description: Array containing the ids of all the messages that were sent for the request
+                    items:
+                      type: string
+                      description: Message Id
+                      example: '<WBHCBQCCWS1XKR9ROPCT@smtp>'
+        500:
+          description: This error occurs when service couldn't parse body
+        422:
+          description: This error occurs when request couldn't be validated or message couldn't be sent
+        404:
+          description: This error occurs when template with given ID not found in DB
+        400:
+          description: Missing or malformed JWT
+        401:
+          description: Provided JWT token expired
+
+  /auth/v1/authenticate:
+    post:
+      summary: Allow a user to pass authentication procedure and get JWT token
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  example: '4974fc03-0f8a-4228-85a5-816892be6d21'
+                client_secret:
+                  type: string
+                  example: 'here is the secret'
+              required:
+                - client_id
+                - client_secret
+      responses:
+        401:
+          description: Provided data are incorrect and client couldn't be authenticated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'no rows in result set'
+        500:
+          description: This error occurs when service couldn't create a JWT token or token couldn't be stored in the DB
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: 'unexpected EOF'
+        200:
+          description: Token will be send as a response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjozLCJjbGllbnRfaWQiOiI0OTc0ZmMwMy0wZjhhLTQyMjgtODVhNS04MTY4OTJiZTZkMjEiLCJleHAiOjE2NDczMzU4NTh9.BfO1oEpP3PxftSES354DIGaYkp6e7MPRpfYXl4Dny24'
+                  expiration_date:
+                    type: string
+                    format: date-time
+                    example: '2025-10-12T07:20:50.52Z'
+

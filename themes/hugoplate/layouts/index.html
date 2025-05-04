@@ -37,11 +37,11 @@
       <div class="md:col-6 lg:col-5 order-1 md:order-2 flex justify-center relative" >
         {{ partial "image.html" (dict "Src" .image "Alt" "banner-image" "Class" "w-[250px] md:w-[330px]" "Size" "330x")
         }}
-        <div class="hidden sm:block absolute bottom-30 right-20 md:right-12 z-10 bg-[#155063] rounded-2xl w-[100px] h-[90px]">
+        <div class="hidden md:block absolute bottom-30 right-6 xl:right-12 z-10 bg-[#155063] rounded-2xl w-[100px] h-[90px]">
           <img src="/images/sale.gif" alt="gif" class="w-full">
         </div>
         <div
-          class="hidden sm:flex absolute top-30 left-24  md:left-16 z-10 bg-[#155063] rounded-full w-[78px] h-[78px] items-center justify-center">
+          class="hidden md:flex absolute top-30 left-0  xl:left-16 z-10 bg-[#155063] rounded-full w-[78px] h-[78px] items-center justify-center">
           <img src="/images/document.png" alt="document" class="w-[35px]">
         </div>
       </div>
@@ -110,7 +110,7 @@
       <div class="lg:col-7 {{ if not (modBool $i 2) }}
               lg:order-2
             {{ end }} ">
-      <div class="w-full" {{ if not (modBool $i 2) }} data-aos="fade-left" {{else}} data-aos="fade-right" {{end}}>
+      <div class="w-full" {{ if not (modBool $i 2) }} data-aos="fade-up" {{else}} data-aos="fade-up" {{end}}>
         {{ partial "image" (dict "Src" .image "Alt" .title "Class" "w-full") }}
       </div>
       </div>

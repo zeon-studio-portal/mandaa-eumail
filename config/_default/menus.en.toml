@@ -28,7 +28,7 @@ weight = 5
 
 [[main]]
 name = "API"
-url = "https://api.mandaa.io"
+url = "api/"
 weight = 6
 
 

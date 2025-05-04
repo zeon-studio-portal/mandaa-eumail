@@ -1,0 +1,46 @@
+{{ define "main" }}
+
+<script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css">
+
+<style>
+  :root {
+    --color-primary: #2e7eed;
+    --color-text-primary: #2e7eed;
+  }
+
+  footer a,
+  p {
+    color: #B0B0B0;
+  }
+  #hide-button {
+    display: none;
+  }
+
+  header a.active {
+    color: var(--color-primary) !important;
+    border-top: 4px solid var(--color-primary) !important;
+  }
+
+  footer h5 {
+    font-size: 18px !important;
+  }
+
+  footer img,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 14px;
+  }
+
+  .btn {
+    color: white;
+  }
+</style>
+<elements-api apiDescriptionUrl="/files/openapi.yaml" router="hash" layout="sidebar" />
+
+
+{{ end }}
