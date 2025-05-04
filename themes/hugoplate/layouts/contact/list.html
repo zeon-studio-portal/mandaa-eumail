@@ -12,7 +12,10 @@
           <p class="text-text-dark text-lg">{{ .description | markdownify }}</p>
         </div>
         <div class="lg:col-7 lg:pl-10">
-          <form action="{{site.Params.contact_form.action}}" method="POST">
+          <form action="{{ site.Params.contact_form_action }}" method="POST">
+            <input type="hidden" name="_next" value="{{site.BaseURL | relLangURL}}/contact/">
+
+
             <div class="row">
               {{/* full name */}}
               <div class="sm:col-6 mb-6">

@@ -19,12 +19,12 @@
         </div>
       </div>
       <div class="md:col-8 xl:col-7 px-6">
-        <div class="content">
+        <div class="docs content">
           {{.Content }}
         </div>
       </div>
       <div class="xl:col-2">
-        <div class="table-of-contents bg-light rounded-sm sticky top-10 {{if site.Params.navbar_fixed}}top-26{{end}}">
+        <div class="table-of-contents bg-light rounded-sm md:sticky md:top-10 {{if site.Params.navbar_fixed}}top-26{{end}} md:h-[calc(100vh-100px)] md:overflow-y-scroll hide-scrollable">
           <h3 class="text-lg font-semibold mb-4">{{ T "toc" }}</h3>
           {{.TableOfContents}}
         </div>

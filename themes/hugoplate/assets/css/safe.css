@@ -19,3 +19,6 @@ input#nav-toggle:checked ~ #nav-menu {
 .swiper-pagination-bullet-active {
   @apply !bg-primary;
 }
+.hide-scrollable {
+  scrollbar-width: none;
+}

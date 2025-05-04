@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row justify-center gap-y-6">
         <div class="lg:col-3">
-          <div class="sticky top-26 table-of-contents">
+          <div class="md:sticky  md:top-10 {{if site.Params.navbar_fixed}}top-26{{end}} table-of-contents">
             {{.TableOfContents}}
           </div>
         </div>

@@ -46,7 +46,7 @@
   @apply prose-p:text-base prose-p:text-text;
   @apply prose-a:text-primary prose-a:text-lg prose-a:font-medium prose-a:no-underline;
   @apply prose-img:max-w-full prose-img:rounded;
-  @apply prose-strong:font-bold prose-strong:text-lg prose-strong:text-primary;
+  @apply prose-strong:font-bold prose-strong:text-lg;
   @apply prose-hr:border-border;
   @apply prose-pre:rounded-none prose-pre:bg-light prose-pre:border-l prose-pre:border-primary prose-pre:py-5 ;
   @apply prose-code:text-text-dark prose-code:text-base ;
@@ -57,6 +57,9 @@
   @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-text-dark;
   @apply prose-tr:border-border;
   @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px];
+}
+.docs.content{
+  @apply prose-strong:text-primary;
 }
 
 /* homepage 3 */
