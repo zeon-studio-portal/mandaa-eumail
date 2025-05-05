@@ -54,6 +54,17 @@
 
   .sl-elements .TextRequestBody {
     max-height: 100% !important;
+
+  }
+
+  .sl-stack.sl-stack--vertical.sl-stack--1.sl-flex.sl-flex-col.sl-w-full.sl-h-auto > .sl-flex {
+    display: block !important;
+  }
+
+  .sl-stack.sl-stack--vertical.sl-stack--1.sl-flex.sl-flex-col.sl-w-full.sl-h-auto > .sl-flex > .sl-flex{
+    border: 2px solid var(--color-primary) !important;
+    padding: 10px !important;
+    border-radius: 8px;
   }
 </style>
 <elements-api apiDescriptionUrl="/files/openapi.yaml" router="hash" layout="sidebar" />
