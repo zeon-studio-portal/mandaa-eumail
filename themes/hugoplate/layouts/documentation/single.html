@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="xl:col-2">
-        <div class="table-of-contents bg-light rounded-sm md:sticky md:top-10 {{if site.Params.navbar_fixed}}top-26{{end}} md:h-[calc(100vh-100px)] md:overflow-y-scroll hide-scrollable">
+        <div class="table-of-contents bg-light rounded-sm md:sticky md:top-10 {{if site.Params.navbar_fixed}}top-26{{end}}" id="table-of-contents">
           <h3 class="text-lg font-semibold mb-4">{{ T "toc" }}</h3>
           {{.TableOfContents}}
         </div>
@@ -34,4 +34,32 @@
 {{/* FAQ */}}
 {{ partial "faq"  }}
 
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toc = document.getElementById('table-of-contents');
+    
+    // Function to check if content needs scrolling
+    function adjustTocHeight() {
+      // Remove height class first to get actual content height
+      toc.classList.remove('md:h-[calc(100vh-100px)]', 'md:overflow-y-scroll', 'hide-scrollable');
+      
+      // Get content height and viewport height
+      const tocHeight = toc.scrollHeight;
+      const viewportHeight = window.innerHeight;
+      const topOffset = 100; 
+      
+      // If content is taller than viewport minus offset, add scrolling classes
+      if (tocHeight > viewportHeight - topOffset) {
+        toc.classList.add('md:h-[calc(100vh-100px)]', 'md:overflow-y-scroll', 'hide-scrollable');
+      }
+    }
+    
+    // Run on load
+    adjustTocHeight();
+    
+    // Also run when window is resized
+    window.addEventListener('resize', adjustTocHeight);
+  });
+</script>
 {{ end }}
